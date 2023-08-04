@@ -42,7 +42,6 @@ ADD PropertySplitAddress nvarchar(255)
 UPDATE  nashville_housing 
 SET  PropertySplitAddress=SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1 )
 
-
 ALTER TABLE nashville_housing
 ADD PropertySplitCity nvarchar(255)
 
@@ -50,9 +49,10 @@ UPDATE nashville_housing
 SET PropertySplitCity = SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress)+1 , LEN(PropertyAddress)) 
 
 SELECT * FROM nashville_housing
+
  
  SELECT OwnerAddress,PARSENAME(REPLACE(OwnerAddress, ',', '.') ,3 ) AS ADDRESS,
- PARSENAME(REPLACE(OwnerAddress, ',', '.') ,2 ) AS C›TY,
+ PARSENAME(REPLACE(OwnerAddress, ',', '.') ,2 ) AS C√ùTY,
  PARSENAME(REPLACE(OwnerAddress, ',', '.') ,1 ) AS STATE
  FROM nashville_housing
 
@@ -70,7 +70,6 @@ SET OwnerSplitCity = PARSENAME(REPLACE(OwnerAddress, ',', '.') ,2 )
 
 ALTER TABLE nashville_housing 
 ADD OwnerSplitState Nvarchar(255)
-
 
 UPDATE nashville_housing 
 SET OwnerSplitState = PARSENAME(REPLACE(OwnerAddress, ',', '.') ,1 )
