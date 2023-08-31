@@ -72,8 +72,7 @@ ALTER TABLE ds_jobs ADD Location_State NVARCHAR(255)
 UPDATE ds_jobs SET Location_City = PARSENAME(REPLACE(Location,',','.'),2)
 UPDATE ds_jobs SET Location_State =TRIM(PARSENAME(REPLACE(Location,',','.'),1))
 
---Changing  some values ​​in the Location_State column with their abbreviations 
---and those that are not appropriate with Null
+--Changing  some values ​​in the Location_State column with their abbreviations and those that are not appropriate with Null
 
 SELECT Location_City,Location_State 
 FROM  ds_jobs WHERE Location_City IS NULL
